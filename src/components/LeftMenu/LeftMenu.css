@@ -1,0 +1,38 @@
+.leftMenu {
+  width: 280px;
+  height: 100%;
+  min-height: 100vh;
+  background: rgba(34, 34, 34, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.9;
+  padding: 20px 15px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logoContainer {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer i {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.logoContainer h2 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 550px) {
+  .leftMenu {
+    width: 64px;
+    min-width: 64px;
+  }
+
+  .logoContainer h2 {
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,140 @@
+.audioList {
+    padding: 10px 30px;
+    position: relative;
+    top: -10%;
+}
+
+.audioList  .title {
+    font-size: 18px;
+    color: #f1f1f1;
+}
+
+.audioList  .title span {
+    color: #fff;
+    font-size: 12px;
+}
+
+.audioList .songsContainer{ 
+    height: 140px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.audioList .songsContainer .songs {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+    margin: 10px 0;
+    padding-bottom: 5px;
+}
+
+.audioList .songsContainer .songs:hover,
+.audioList .songsContainer .songs.active {
+    color: #49e12e;
+    transition: 0.3s;
+}
+
+.songs .count {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.songs .song {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.songs .song .imgBox { 
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 0.5em;
+    background-color: #555;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.song .imgBox img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.song .section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.song .section .songName { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.song .section .hits {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23%;
+}
+
+.song .section .hits .hit,
+.song .section .favourite,
+.song .section .hits .duration {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.song .section .hits .hit i {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.song .section .favourite i{
+    color: #49e12e;
+    filter: drop-shadow(0px 0px 4px #49e12e);
+}
+
+/* Mobile */
+@media screen and (max-width: 550px) {
+    .audioList {
+        padding: 10px 5px;
+        top: 0;
+    }
+
+    .audioList .songs .song .section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .audioList .songs .song .section .songName {
+        width: 100%;
+    }
+
+    .songs .song .section .songName .songArtist {
+       margin-right: 15px;
+    }
+
+    .audioList .songs .song .section .hits {
+        justify-content: space-between;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .audioList .songsContainer {
+        height: 216px;
+    }
+}

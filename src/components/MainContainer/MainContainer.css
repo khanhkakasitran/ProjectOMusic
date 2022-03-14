@@ -1,0 +1,149 @@
+.mainContainer {
+    height: 100vh;
+    z-index: 1;
+    flex-grow: 1;
+    background: rgba(34, 34, 34, 0.1);
+}
+
+.searchBox {
+    width: 80%;
+    height: 45px;
+    position: relative;
+    left: 10%;
+    margin-top: 20px;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4);
+}
+
+.searchBox input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 45px;
+    color: #f1f1f1;
+    font-size: 14px; 
+    font-weight: bold;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #fff;
+    padding-left: 5px;
+    font-size: 35px;
+}
+
+.mainContainer .menuList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: -10%;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+}
+
+.mainContainer .menuList .mainMenuList {
+    display: flex;
+    align-items: center;
+}
+
+.mainContainer .menuList .mainMenuList .mainMenuItem {
+    list-style: none;
+    margin: 0 20px;
+    position: relative;
+}
+
+.mainContainer .menuList .mainMenuList .mainMenuItem::before { 
+    content: " ";
+    position: absolute;
+    bottom: -15px;
+    left: 4px;
+    width: 0px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #49e12e;
+}
+
+.mainContainer .menuList .mainMenuList .mainMenuItem:hover::before,
+.mainContainer .menuList .mainMenuList .mainMenuItem.active::before {
+    width: 80%;
+    transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+.menuList .mainMenuList .mainMenuItem a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.menuList .mainMenuList .mainMenuItem:hover a,
+.menuList .mainMenuList .mainMenuItem.active a {
+    color: #f1f1f1;
+    transition: 0.3s;
+}
+
+.mainContainer .menuList p {
+    color: #f1f1f1;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.mainContainer .menuList p i { 
+    margin-right: 6px;
+    margin-top: 0px;
+    font-size: 15px;
+}
+
+.mainContainer .menuList p span {
+    /* display: block; */
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    margin-left: 6px;
+}
+
+/* Mobile */
+@media screen and (max-width: 550px) {
+    .mainContainer {
+        min-width: 300px;
+    }
+
+    .mainContainer .menuList {
+        padding: 5px 10px;
+        top: 0;
+    }
+
+    .menuList .mainMenuList .mainMenuItem {
+        margin: 0 5px !important;
+    }
+
+    .menuList p {
+        font-size: 12px;
+    }
+
+    .menuList p i {
+        font-size: 10px;
+    }
+
+    .mainContainer .menuList p {
+        font-size: 10px;
+    }
+
+    .mainContainer .menuList p i,
+    .mainContainer .menuList p span {  
+        font-size: 12px;
+        margin-right: 3px;
+    }
+}

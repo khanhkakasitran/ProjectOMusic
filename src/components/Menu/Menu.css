@@ -1,0 +1,76 @@
+.MenuContainer {
+    margin: 4px 0;
+}
+
+.MenuContainer .title {
+    color: #848484;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.MenuContainerList {
+    width: 100%;
+    padding: 0;
+}
+
+.MenuContainerItem{
+    list-style: none;
+    margin:5px 0;
+    width: 100%;
+    padding: 5px 0;
+    position: relative;
+}
+
+.MenuContainerItem a{
+    text-decoration: none;
+    color: #C4C5C5;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.MenuContainerItem a i{
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.MenuContainerItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0px;
+    height: 100%;
+    background: #49e12e;
+    border-radius: 5px;
+}
+
+.MenuContainerItem:hover::before,
+.MenuContainerItem.active::before
+{
+    width: 5px;
+    transition: 0.3s;
+}
+
+.MenuContainerItem:hover a,
+.MenuContainerItem.active a {
+    color: #f1f1f1;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 550px) {
+    .MenuContainerItem {
+        margin: 25px 0;
+    }
+
+    .MenuContainerItem a span{
+       display: none;
+    }
+
+    .MenuContainerItem a i {
+        font-size: 26px;
+    }
+    
+}
