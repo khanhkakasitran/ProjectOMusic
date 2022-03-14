@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/ProjectOMusic/static/css/main.d046180b.css",
+    "main.js": "/ProjectOMusic/static/js/main.4dcabfe5.js",
+    "static/js/787.5cab85d9.chunk.js": "/ProjectOMusic/static/js/787.5cab85d9.chunk.js",
+    "static/media/profile.jpg": "/ProjectOMusic/static/media/profile.deda3026f2eb1ff0f40f.jpg",
+    "static/media/backgroud.png": "/ProjectOMusic/static/media/backgroud.37831fb0d84cc73cec55.png",
+    "static/media/banner.jpg": "/ProjectOMusic/static/media/banner.3b4489550ba4223b7425.jpg",
+    "static/media/track.png": "/ProjectOMusic/static/media/track.bddb5792891bf59741a8.png",
+    "index.html": "/ProjectOMusic/index.html",
+    "main.d046180b.css.map": "/ProjectOMusic/static/css/main.d046180b.css.map",
+    "main.4dcabfe5.js.map": "/ProjectOMusic/static/js/main.4dcabfe5.js.map",
+    "787.5cab85d9.chunk.js.map": "/ProjectOMusic/static/js/787.5cab85d9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d046180b.css",
+    "static/js/main.4dcabfe5.js"
+  ]
+}
