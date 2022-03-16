@@ -40,7 +40,7 @@ function MusicPlayer({ song, imgSrc }) {
   const changePlayPause = () => {
     const prevPlay = isPlaying
 
-    if(prevPlay) {
+    if (prevPlay) {
       audioPlayer.current.pause()
       //cancelAnimationFrame(animationRef.current)
     } else {
@@ -51,34 +51,33 @@ function MusicPlayer({ song, imgSrc }) {
     setPlaying(!prevPlay)
 
     // Tiến độ song
-    audioPlayer.current.ontimeupdate = function() {
+    audioPlayer.current.ontimeupdate = function () {
       if (audioPlayer.current.duration) {
-        const progressPercent = Math.floor(audioPlayer.current.currentTime / audioPlayer.current.duration * 100)
+        const progressPercent = audioPlayer.current.currentTime
         progressBar.current.value = progressPercent
       }
     }
-    
+
   };
 
   //Xử lý khi tua Song
-  const changeProgress = (progressBar) => { 
-    const seekTime = audioPlayer.current.duration / 100 * progressBar.target.value
+  const changeProgress = (progressBar) => {
+    const seekTime = progressBar.target.value
     audioPlayer.current.currentTime = seekTime
 
     progressBar.target.style.setProperty(
       '--played-progress',
       `${seekTime}%`
     )
-    console.log(progressBar.target.style)
   }
 
   //Xử lý tính Time
   //const calculateTime = (sec) => {
-   //Lấy value của minutes
+  //Lấy value của minutes
   // const minutes = Math.floor(sec / 60) 
-   //const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`
-   // Lấy value của seconds
-   //const seconds = Math.floor(sec % 60)
+  //const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`
+  // Lấy value của seconds
+  //const seconds = Math.floor(sec % 60)
   // const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`
 
   //  return `${returnMin}:${returnSec}`
@@ -91,15 +90,15 @@ function MusicPlayer({ song, imgSrc }) {
 
   //Thay đổi progressBar
   //const changeProgress = () => {
-   // audioPlayer.current.currentTime = progressBar.current.value;
-   // changeCurrentTime()
-   // audioPlayer.current.ontimeupdate = function() {
-      // if (audioPlayer.duration) {
-      //   const progressPercent = Math.floor(audioPlayer.current.currentTime / audioPlayer.duration)
-      //  console.log(audioPlayer.current.currentTime)
-      // }
-   // }
-    //console.log(audioPlayer.duration)
+  // audioPlayer.current.currentTime = progressBar.current.value;
+  // changeCurrentTime()
+  // audioPlayer.current.ontimeupdate = function() {
+  // if (audioPlayer.duration) {
+  //   const progressPercent = Math.floor(audioPlayer.current.currentTime / audioPlayer.duration)
+  //  console.log(audioPlayer.current.currentTime)
+  // }
+  // }
+  //console.log(audioPlayer.duration)
   //}
 
   // Xử lý progressBar khi animation đang playing
@@ -111,11 +110,11 @@ function MusicPlayer({ song, imgSrc }) {
 
   // Thay đổi thời gian hiện tại 
   //const changeCurrentTime = () => {
-    // progressBar.current.style.setProperty(
-    //   '--played-progress',
-    //   `${progressBar.current.value / duration * 100}`
-    // )
-   // console.log(audioPlayer.current.currentTime)
+  // progressBar.current.style.setProperty(
+  //   '--played-progress',
+  //   `${progressBar.current.value / duration * 100}`
+  // )
+  // console.log(audioPlayer.current.currentTime)
   //}
 
   return (
@@ -133,8 +132,8 @@ function MusicPlayer({ song, imgSrc }) {
 
         <div className="top">
           <div className="left">
-            <div 
-              className="loved" 
+            <div
+              className="loved"
               onClick={changeLoved}
             >
               {isLove ? (
@@ -164,8 +163,8 @@ function MusicPlayer({ song, imgSrc }) {
               </i>
             </div>
 
-            <div 
-              className="playPause" 
+            <div
+              className="playPause"
               onClick={changePlayPause}
             >
               {isPlaying ? (
@@ -200,9 +199,9 @@ function MusicPlayer({ song, imgSrc }) {
           <div className="currentTime">
             {/* {calculateTime(currentTime)} */}
           </div>
-          <input 
-            className="progressBar" 
-            type="range" 
+          <input
+            className="progressBar"
+            type="range"
             value="0"
             step="1"
             min="0"
