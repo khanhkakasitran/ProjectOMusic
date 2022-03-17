@@ -3,11 +3,11 @@ import {
   FaRegHeart,
   FaHeart,
   FaStepForward,
-  FaBackward,
+  FaRedo,
   FaStepBackward,
   FaPause,
   FaPlay,
-  FaForward,
+  FaRandom,
   FaShareAlt,
 } from "react-icons/fa";
 import { BsDownload } from "react-icons/bs";
@@ -17,50 +17,72 @@ import "./MusicPlayer.css";
 function MusicPlayer({ song, imgSrc }) {
   const [isLove, setLoved] = useState(false);
   const [isPlaying, setPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0)
+  // const [duration, setDuration] = useState(0);
+  // const [currentTime, setCurrentTime] = useState(0)
   // Lấy DOM element của audio player và progressBar
   const audioPlayer = useRef()
   const progressBar = useRef()
   // Lấy DOM element của progress khi chạy animation
-  const animationRef = useRef()
+  // const animationRef = useRef()
 
   //Thay đổi trạng thái của duration
-  useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration)
+  // useEffect(() => {
+  //   const seconds = Math.floor(audioPlayer.current.duration)
 
-    setDuration(seconds)
-  }, [
-    audioPlayer?.current?.loadedmetadata, 
-    audioPlayer?.current?.readystate,
-  ])
+  //   setDuration(seconds)
+  //   console.log(seconds)
+  // }, [
+  // //   audioPlayer?.current?.loadedmetadata, 
+  //   audioPlayer?.current?.readystate,
+  // ])
 
-  // Phát, dừng bài hát
+  // Play / Pause / Seek song
   const changePlayPause = () => {
     const prevPlay = isPlaying
 
     if(prevPlay) {
       audioPlayer.current.pause()
-      cancelAnimationFrame(animationRef.current)
+      //cancelAnimationFrame(animationRef.current)
     } else {
       audioPlayer.current.play()
-      animationRef.current = requestAnimationFrame(handleProgressPlaying)
+      //animationRef.current = requestAnimationFrame(handleProgressPlaying)
     }
 
     setPlaying(!prevPlay)
+
+    // Tiến độ song
+    audioPlayer.current.ontimeupdate = function() {
+      if (audioPlayer.current.duration) {
+        const progressPercent = Math.floor(audioPlayer.current.currentTime / audioPlayer.current.duration * 100)
+        progressBar.current.value = progressPercent
+      }
+    }
+    
   };
 
-  //Xử lý tính Time
-  const calculateTime = (sec) => {
-   //Lấy value của minutes
-   const minutes = Math.floor(sec / 60) 
-   const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`
-   // Lấy value của seconds
-   const seconds = Math.floor(sec % 60)
-   const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`
+  //Xử lý khi tua Song
+  const changeProgress = (progressBar) => { 
+    const seekTime = audioPlayer.current.duration / 100 * progressBar.target.value
+    audioPlayer.current.currentTime = seekTime
 
-   return `${returnMin}:${returnSec}`
+    progressBar.target.style.setProperty(
+      '--played-progress',
+      `${seekTime}%`
+    )
+    console.log(progressBar.target.style)
   }
+
+  //Xử lý tính Time
+  //const calculateTime = (sec) => {
+   //Lấy value của minutes
+  // const minutes = Math.floor(sec / 60) 
+   //const returnMin = minutes < 10 ? `0${minutes}` : `${minutes}`
+   // Lấy value của seconds
+   //const seconds = Math.floor(sec % 60)
+  // const returnSec = seconds < 10 ? `0${seconds}` : `${seconds}`
+
+  //  return `${returnMin}:${returnSec}`
+  // }
 
   //Thay đổi icon yêu thích
   const changeLoved = () => {
@@ -68,25 +90,33 @@ function MusicPlayer({ song, imgSrc }) {
   };
 
   //Thay đổi progressBar
-  const changeProgress = () => {
-    audioPlayer.current.currentTime = progressBar.current.value;
-    changeCurrentTime()
-  }
+  //const changeProgress = () => {
+   // audioPlayer.current.currentTime = progressBar.current.value;
+   // changeCurrentTime()
+   // audioPlayer.current.ontimeupdate = function() {
+      // if (audioPlayer.duration) {
+      //   const progressPercent = Math.floor(audioPlayer.current.currentTime / audioPlayer.duration)
+      //  console.log(audioPlayer.current.currentTime)
+      // }
+   // }
+    //console.log(audioPlayer.duration)
+  //}
 
   // Xử lý progressBar khi animation đang playing
-  const handleProgressPlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime
-    changeCurrentTime()
-    animationRef.current = requestAnimationFrame(handleProgressPlaying)
-  }
+  // const handleProgressPlaying = () => {
+  //   progressBar.current.value = audioPlayer.current.currentTime
+  //   changeCurrentTime()
+  //   animationRef.current = requestAnimationFrame(handleProgressPlaying)
+  // }
 
   // Thay đổi thời gian hiện tại 
-  const changeCurrentTime = () => {
-    progressBar.current.style.setProperty(
-      '--played-progress',
-      `${progressBar.current.value / duration * 100}%`
-    )
-  }
+  //const changeCurrentTime = () => {
+    // progressBar.current.style.setProperty(
+    //   '--played-progress',
+    //   `${progressBar.current.value / duration * 100}`
+    // )
+   // console.log(audioPlayer.current.currentTime)
+  //}
 
   return (
     <div className="musicPlayer">
@@ -103,7 +133,10 @@ function MusicPlayer({ song, imgSrc }) {
 
         <div className="top">
           <div className="left">
-            <div className="loved" onClick={changeLoved}>
+            <div 
+              className="loved" 
+              onClick={changeLoved}
+            >
               {isLove ? (
                 <i>
                   <FaRegHeart />
@@ -124,14 +157,17 @@ function MusicPlayer({ song, imgSrc }) {
           <div className="middle">
             <div className="back">
               <i>
-                <FaStepBackward />
+                <FaRedo />
               </i>
               <i>
-                <FaBackward />
+                <FaStepBackward />
               </i>
             </div>
 
-            <div className="playPause" onClick={changePlayPause}>
+            <div 
+              className="playPause" 
+              onClick={changePlayPause}
+            >
               {isPlaying ? (
                 <i>
                   <FaPause />
@@ -145,10 +181,10 @@ function MusicPlayer({ song, imgSrc }) {
 
             <div className="forward">
               <i>
-                <FaForward />
+                <FaStepForward />
               </i>
               <i>
-                <FaStepForward />
+                <FaRandom />
               </i>
             </div>
           </div>
@@ -161,18 +197,28 @@ function MusicPlayer({ song, imgSrc }) {
         </div>
 
         <div className="bottom">
-          <div className="currentTime">{calculateTime(currentTime)}</div>
+          <div className="currentTime">
+            {/* {calculateTime(currentTime)} */}
+          </div>
           <input 
-            type="range" 
             className="progressBar" 
+            type="range" 
+            value="0"
+            step="1"
+            min="0"
+            max="100"
             ref={progressBar}
             onChange={changeProgress}
           />
           <div className="duration">
-            {
+            {/* {
               duration && !isNaN(duration) && calculateTime(duration) 
               ? calculateTime(duration) : "00:00"
-            }
+            } */}
+            {/* {
+              `${duration}` ? !isNaN(duration)
+              `${duration}` : "00:00"
+            } */}
           </div>
         </div>
       </div>

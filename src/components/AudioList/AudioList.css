@@ -12,6 +12,7 @@
 .audioList  .title span {
     color: #fff;
     font-size: 12px;
+    margin-left: 5px;
 }
 
 .audioList .songsContainer{ 
@@ -109,7 +110,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 740px) {
     .audioList {
         padding: 10px 5px;
         top: 0;

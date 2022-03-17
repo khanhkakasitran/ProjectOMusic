@@ -73,7 +73,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 550px) { 
+@media screen and (max-width: 740px) { 
     .rightMenu {
         min-width: 64px;
     }

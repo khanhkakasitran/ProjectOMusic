@@ -178,6 +178,22 @@ const Songs = [
       imgSrc:
       "https://i.scdn.co/image/ab67616d0000b273cac40eaa1c17e52e45a8098f",
     },
+    {
+      id: 21,
+      favourite: false,
+      songName: "Landscape (Vlog No Copyright Music)",
+      artist: "Janji",
+      song: "https://cdn.discordapp.com/attachments/775740994595323954/775741839517024256/Jarico_-_Landscape_NCS_BEST_OFMP3_160K.mp3",
+      imgSrc: "https://i.scdn.co/image/ab67616d0000b27328007758bd0a5ffb1a07abeb",
+    },
+    {
+      id: 22,
+      favourite: false,
+      songName: "Dreams [NCS Release]",
+      artist: "Lost Sky",
+      song: "https://cdn.discordapp.com/attachments/775740994595323954/775741919178653716/Lost_Sky_-_Dreams_NCS_ReleaseMP3_160K.mp3",
+      imgSrc: "https://i.scdn.co/image/ab67616d0000b273eb4d7af8109e201a4d438e02",
+    },
   ];
   
   export { Songs };
